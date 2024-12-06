@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Styles */
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #50c878;
+  --background-color: #f5f7fa;
+  --text-color: #2c3e50;
+  --card-background: #ffffff;
+  --border-radius: 12px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.max-w-4xl {
+  max-width: 64rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--card-background);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.75rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.25rem;
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.75rem;
+  color: var(--secondary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Tab Buttons */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--hover-color);
+  padding: 0.75rem;
+  border-radius: 50px;
+}
+
+.main-tab-button {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 25px;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--animation-duration) ease;
+}
+
+.main-tab-button:hover {
+  background-color: rgba(74, 144, 226, 0.1);
+  transform: translateY(-2px);
+}
+
+.main-tab-button.active {
+  background-color: var(--primary-color);
+  color: var(--card-background);
+  animation: pulse var(--animation-duration) ease-out;
+}
+
+/* Symptom Grid */
+.symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.symptom-button {
+  padding: 0.75rem 0.5rem;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--animation-duration) ease;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.symptom-button:hover {
+  background-color: var(--hover-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.symptom-button.active {
+  background-color: var(--primary-color);
+  color: var(--card-background);
+  border-color: var(--primary-color);
+  animation: pulse var(--animation-duration) ease-out;
+}
+
+/* Center Button Container */
+.center-button-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.center-button {
+  padding: 0.75rem 2rem;
+  background-color: var(--secondary-color);
+  color: var(--card-background);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--animation-duration) ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.center-button:hover {
+  background-color: #27ae60;
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Results and Recommendations */
+details {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all var(--animation-duration) ease;
+}
+
+details:hover {
+  box-shadow: 0 2px 10px rgba(74, 144, 226, 0.1);
+}
+
+summary {
+  cursor: pointer;
+  padding: 0.75rem;
+  background-color: var(--background-color);
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--primary-color);
+  transition: all var(--animation-duration) ease;
+  font-size: 1.1rem;
+}
+
+summary:hover {
+  background-color: var(--hover-color);
+}
+
+/* Form Styles */
+form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+label {
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+input[type="number"],
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all var(--animation-duration) ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  transform: translateY(-2px);
+}
+
+button[type="submit"] {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--card-background);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--animation-duration) ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover {
+  background-color: #3a7bd5;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Additional Styles for Health App Look */
+.result-box {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.result-box h4 {
+  color: var(--primary-color);
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.health-tip {
+  background-color: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.health-tip h5 {
+  color: #4caf50;
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .max-w-4xl {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .symptom-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 12px;
+  }
+
+  .main-tab-button {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Accessibility Improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .max-w-4xl {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .tab-buttons,
+  .center-button-container,
+  button[type="submit"] {
+    display: none;
+  }
+}
