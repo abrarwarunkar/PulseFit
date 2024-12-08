@@ -18,6 +18,8 @@ import {
   LinearProgress,
   Chip
 } from '@mui/material';
+import { useUser } from '@clerk/clerk-react';
+import { getUserData, saveUserData, STORAGE_KEYS } from '../utils/storage';
 
 // Goal Types and Metrics
 const GOAL_TYPES = {
@@ -48,6 +50,7 @@ const GOAL_METRICS = {
 };
 
 const GoalTracker = () => {
+  const { user } = useUser();
   const [goals, setGoals] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [newGoal, setNewGoal] = useState({
@@ -61,17 +64,18 @@ const GoalTracker = () => {
 
   // Load goals from localStorage
   useEffect(() => {
-    console.log('GoalTracker component mounted');
-    const savedGoals = JSON.parse(localStorage.getItem('gymGoals') || '[]');
-    console.log('Loaded goals:', savedGoals);
-    setGoals(savedGoals);
-  }, []);
+    if (user) {
+      const savedGoals = getUserData(user.id, STORAGE_KEYS.GOALS) || [];
+      setGoals(savedGoals);
+    }
+  }, [user]);
 
   // Save goals to localStorage
   useEffect(() => {
-    console.log('Goals updated:', goals);
-    localStorage.setItem('gymGoals', JSON.stringify(goals));
-  }, [goals]);
+    if (user && goals.length > 0) {
+      saveUserData(user.id, STORAGE_KEYS.GOALS, goals);
+    }
+  }, [user, goals]);
 
   const calculateProgress = (goal) => {
     const progress = (parseFloat(goal.currentValue) / parseFloat(goal.targetValue)) * 100;

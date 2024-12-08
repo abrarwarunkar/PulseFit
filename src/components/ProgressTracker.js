@@ -16,8 +16,11 @@ import {
   TableRow
 } from '@mui/material';
 import { Add as AddIcon, Delete as DeleteIcon } from '@mui/icons-material';
+import { useUser } from '@clerk/clerk-react';
+import { getUserData, saveUserData, STORAGE_KEYS } from '../utils/storage';
 
 const ProgressTracker = () => {
+  const { user } = useUser();
   const [progressEntries, setProgressEntries] = useState([]);
   const [newEntry, setNewEntry] = useState({
     date: new Date().toISOString().split('T')[0],
@@ -29,14 +32,18 @@ const ProgressTracker = () => {
 
   // Load progress entries from localStorage on component mount
   useEffect(() => {
-    const savedProgressEntries = JSON.parse(localStorage.getItem('progressEntries') || '[]');
-    setProgressEntries(savedProgressEntries);
-  }, []);
+    if (user) {
+      const savedProgressEntries = getUserData(user.id, STORAGE_KEYS.PROGRESS) || [];
+      setProgressEntries(savedProgressEntries);
+    }
+  }, [user]);
 
   // Save progress entries to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('progressEntries', JSON.stringify(progressEntries));
-  }, [progressEntries]);
+    if (user && progressEntries.length > 0) {
+      saveUserData(user.id, STORAGE_KEYS.PROGRESS, progressEntries);
+    }
+  }, [user, progressEntries]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
