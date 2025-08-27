@@ -18,7 +18,7 @@ import {
   LinearProgress,
   Chip
 } from '@mui/material';
-import { useUser } from '@clerk/clerk-react';
+// Removed Clerk import
 import { getUserData, saveUserData, STORAGE_KEYS } from '../utils/storage';
 
 // Goal Types and Metrics
@@ -50,7 +50,8 @@ const GOAL_METRICS = {
 };
 
 const GoalTracker = () => {
-  const { user } = useUser();
+  // Mock user for demo
+  const user = { id: 'demo-user' };
   const [goals, setGoals] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [newGoal, setNewGoal] = useState({

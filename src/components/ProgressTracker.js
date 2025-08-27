@@ -16,11 +16,12 @@ import {
   TableRow
 } from '@mui/material';
 import { Add as AddIcon, Delete as DeleteIcon } from '@mui/icons-material';
-import { useUser } from '@clerk/clerk-react';
+// Removed Clerk import
 import { getUserData, saveUserData, STORAGE_KEYS } from '../utils/storage';
 
 const ProgressTracker = () => {
-  const { user } = useUser();
+  // Mock user for demo
+  const user = { id: 'demo-user' };
   const [progressEntries, setProgressEntries] = useState([]);
   const [newEntry, setNewEntry] = useState({
     date: new Date().toISOString().split('T')[0],

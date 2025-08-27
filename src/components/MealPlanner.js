@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useUser } from '@clerk/clerk-react';
+// Removed Clerk import
 import {
   Container,
   Typography,
@@ -116,7 +116,8 @@ const MEAL_NUTRITION = {
 };
 
 const MealPlanner = () => {
-  const { user } = useUser();
+  // Mock user for demo
+  const user = { id: 'demo-user' };
   const [meals, setMeals] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [openGenerateDialog, setOpenGenerateDialog] = useState(false);
