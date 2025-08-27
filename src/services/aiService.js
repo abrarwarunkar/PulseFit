@@ -3,10 +3,10 @@ import Groq from 'groq-sdk';
 console.log('🔑 GROQ API KEY:', process.env.REACT_APP_GROQ_API_KEY ? 'Found' : 'Missing');
 console.log('🔑 Key starts with:', process.env.REACT_APP_GROQ_API_KEY?.substring(0, 10));
 
-const groq = new Groq({
+const groq = process.env.REACT_APP_GROQ_API_KEY ? new Groq({
   apiKey: process.env.REACT_APP_GROQ_API_KEY,
   dangerouslyAllowBrowser: true
-});
+}) : null;
 
 // Check if API key is available
 if (!process.env.REACT_APP_GROQ_API_KEY) {
@@ -32,6 +32,7 @@ Generate 4-5 specific exercises with sets, reps, and detailed instructions tailo
     console.log('🤖 AI PROMPT:', prompt);
 
     try {
+      if (!groq) throw new Error('No API key');
       console.log('🤖 Calling Groq API...');
       const response = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
@@ -71,6 +72,7 @@ Suggest a specific meal with name, ingredients, and calorie count tailored to th
     console.log('🍽️ AI PROMPT:', prompt);
 
     try {
+      if (!groq) throw new Error('No API key');
       console.log('🍽️ Calling Groq API...');
       const response = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
@@ -112,6 +114,7 @@ Current Progress:
 Provide 2-3 specific, actionable insights based on this profile and progress.`;
 
     try {
+      if (!groq) throw new Error('No API key');
       console.log('🧠 Calling Groq API...');
       const response = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
