@@ -1,7 +1,8 @@
 import Groq from 'groq-sdk';
 
 console.log('🔑 GROQ API KEY:', process.env.REACT_APP_GROQ_API_KEY ? 'Found' : 'Missing');
-console.log('🔑 Key starts with:', process.env.REACT_APP_GROQ_API_KEY?.substring(0, 10));
+console.log('🔑 Full env check:', process.env);
+console.log('🔑 Key value:', process.env.REACT_APP_GROQ_API_KEY);
 
 const groq = process.env.REACT_APP_GROQ_API_KEY ? new Groq({
   apiKey: process.env.REACT_APP_GROQ_API_KEY,
