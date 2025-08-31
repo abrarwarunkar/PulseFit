@@ -37,7 +37,7 @@ Generate 4-5 specific exercises with sets, reps, and detailed instructions tailo
       console.log('🤖 Calling Groq API...');
       const response = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
-        model: 'llama3-8b-8192',
+        model: 'llama-3.1-8b-instant',
         temperature: 0.7,
         max_tokens: 200
       });
@@ -77,7 +77,7 @@ Suggest a specific meal with name, ingredients, and calorie count tailored to th
       console.log('🍽️ Calling Groq API...');
       const response = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
-        model: 'llama3-8b-8192',
+        model: 'llama-3.1-8b-instant',
         temperature: 0.6,
         max_tokens: 150
       });
@@ -119,7 +119,7 @@ Provide 2-3 specific, actionable insights based on this profile and progress.`;
       console.log('🧠 Calling Groq API...');
       const response = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
-        model: 'llama3-8b-8192',
+        model: 'llama-3.1-8b-instant',
         temperature: 0.6,
         max_tokens: 180
       });
